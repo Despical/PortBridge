@@ -10,7 +10,7 @@
 
 PortBridge shares a local Minecraft Java server through a managed [Bore TCP tunnel](https://github.com/ekzhang/bore), with a copyable address, route checks and automatic reconnection.
 
-Created by **Despical**. Read the [documentation](https://docs.despical.dev/portbridge/) for setup details and relay settings.
+Created by **Despical**. Download it from the [Plugin Hub](https://hub.despical.dev/plugins/portbridge) and read the [documentation](https://docs.despical.dev/portbridge/) for setup details and relay settings.
 
 ---
 
@@ -33,7 +33,7 @@ Created by **Despical**. Read the [documentation](https://docs.despical.dev/port
 
 PortBridge targets **Paper 1.21.11 and later**. Use **Java 25 or newer** for every supported server version. Folia is not supported.
 
-1. Download the plugin JAR from [GitHub Releases](https://github.com/Despical/PortBridge/releases/latest) or follow [Build from Source](#build-from-source) below.
+1. Download the plugin JAR from the [Plugin Hub](https://hub.despical.dev/plugins/portbridge) or [GitHub Releases](https://github.com/Despical/PortBridge/releases/latest), or follow [Build from Source](#build-from-source) below.
 2. Stop the server and place `portbridge-<version>.jar` in its `plugins/` directory.
 3. Keep `enable-status=true` in Minecraft's `server.properties` so PortBridge can check the local listener and public route.
 4. Start the server with the Java version required by your Paper release and check the console for PortBridge startup and the connection address.
