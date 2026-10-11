@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" fill="none">
+  <title>PortBridge</title>
+  <desc>A cyan bridge connecting two server ports on a navy tile.</desc>
+  <defs>
+    <linearGradient id="portbridge-bg" x1="12" y1="8" x2="116" y2="120" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#122F48"/><stop offset="1" stop-color="#061A2E"/>
+    </linearGradient>
+    <linearGradient id="portbridge-link" x1="24" y1="35" x2="105" y2="85" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#71EAF2"/><stop offset="1" stop-color="#299CF5"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="120" height="120" rx="27" fill="url(#portbridge-bg)"/>
+  <rect x="4.5" y="4.5" width="119" height="119" rx="26.5" stroke="#70C8E3" stroke-opacity=".18"/>
+  <path d="M29 67C34 21 94 21 99 67" stroke="url(#portbridge-link)" stroke-width="8" stroke-linecap="round"/>
+  <path d="M42 82H86" stroke="#70C8E3" stroke-opacity=".24" stroke-width="3" stroke-dasharray="4 6"/>
+  <rect x="16" y="60" width="28" height="41" rx="7" fill="#143B56" stroke="#71EAF2" stroke-width="3"/>
+  <rect x="84" y="60" width="28" height="41" rx="7" fill="#123652" stroke="#39B2F4" stroke-width="3"/>
+  <path d="M25 70H35M25 80H35M93 70H103M93 80H103" stroke="#B8FAFF" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="30" cy="91" r="2.5" fill="#71EAF2"/>
+  <circle cx="98" cy="91" r="2.5" fill="#39B2F4"/>
+  <rect x="59" y="30" width="10" height="10" rx="2" fill="#B8FAFF"/>
+</svg>

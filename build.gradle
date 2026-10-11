@@ -1,0 +1,74 @@
+plugins {
+    id 'java'
+    id 'com.gradleup.shadow' version '9.6.1'
+}
+
+group = 'dev.despical'
+version = '1.0.0'
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(25)
+    withSourcesJar()
+}
+
+repositories {
+    mavenCentral()
+    maven { url = 'https://repo.aikar.co/content/groups/aikar/' }
+    maven { url = 'https://repo.papermc.io/repository/maven-public/' }
+}
+
+dependencies {
+    compileOnly 'io.papermc.paper:paper-api:1.21.11-R0.1-SNAPSHOT'
+    implementation 'co.aikar:acf-paper:0.5.1-SNAPSHOT'
+    implementation 'org.apache.commons:commons-compress:1.28.0'
+
+    testImplementation platform('org.junit:junit-bom:5.14.4')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'io.papermc.paper:paper-api:1.21.11-R0.1-SNAPSHOT'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = 25
+    options.compilerArgs += ['-Xlint:deprecation', '-Xlint:unchecked']
+}
+
+tasks.test { useJUnitPlatform() }
+
+tasks.processResources {
+    filteringCharset = 'UTF-8'
+    inputs.property 'version', project.version
+    filesMatching('plugin.yml') { expand(version: project.version) }
+}
+
+tasks.jar { archiveClassifier = 'plain' }
+
+tasks.shadowJar {
+    archiveClassifier = ''
+    relocate 'co.aikar.commands', 'dev.despical.portbridge.lib.acf'
+    relocate 'co.aikar.locales', 'dev.despical.portbridge.lib.locales'
+    relocate 'org.apache.commons', 'dev.despical.portbridge.lib.commons'
+}
+
+tasks.withType(Jar).configureEach {
+    archiveBaseName = 'portbridge'
+    manifest.attributes('paperweight-mappings-namespace': 'mojang')
+    from('LICENSE') { into 'META-INF' }
+}
+
+tasks.build { dependsOn tasks.shadowJar }
+
+tasks.javadoc {
+    options.encoding = 'UTF-8'
+    options.locale = 'en_US'
+    options.addStringOption('Xdoclint:all,-missing', '-quiet')
+    options.addBooleanOption('Werror', true)
+}
+
+// Documentation is opt-in; a regular build produces binaries and sources only.
+tasks.register('javadocJar', Jar) {
+    dependsOn tasks.javadoc
+    archiveClassifier = 'javadoc'
+    from(tasks.javadoc.destinationDir)
+}

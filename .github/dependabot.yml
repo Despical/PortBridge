@@ -1,0 +1,28 @@
+version: 2
+updates:
+  - package-ecosystem: gradle
+    directory: /
+    schedule:
+      interval: daily
+    groups:
+      plugin-libraries:
+        patterns:
+          - "co.aikar:*"
+          - "org.apache.commons:*"
+      gradle-build-tooling:
+        patterns:
+          - "gradle"
+          - "com.gradleup.shadow*"
+    ignore:
+      - dependency-name: "*"
+        update-types:
+          - "version-update:semver-major"
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: daily
+    ignore:
+      - dependency-name: "*"
+        update-types:
+          - "version-update:semver-major"

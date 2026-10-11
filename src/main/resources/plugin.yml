@@ -1,0 +1,29 @@
+name: PortBridge
+version: '${version}'
+main: dev.despical.portbridge.PortBridgePlugin
+api-version: '1.21.11'
+authors: [Despical]
+website: https://docs.despical.dev/portbridge/
+description: Share your local server through a managed Bore TCP tunnel.
+
+permissions:
+  portbridge.admin:
+    description: Access all PortBridge commands and connection notifications.
+    default: op
+    children:
+      portbridge.status: true
+      portbridge.address: true
+      portbridge.manage: true
+      portbridge.reload: true
+  portbridge.status:
+    description: View tunnel status and command help.
+    default: op
+  portbridge.address:
+    description: View and copy the public connection address.
+    default: op
+  portbridge.manage:
+    description: Start, stop, and restart the tunnel.
+    default: op
+  portbridge.reload:
+    description: Reload configuration and chat messages.
+    default: op

@@ -1,0 +1,81 @@
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#                                                                             #
+#                                  PortBridge                                 #
+#                                 by Despical                                 #
+#                                                                             #
+#                    https://github.com/Despical/PortBridge                   #
+#                    https://docs.despical.dev/portbridge/                    #
+#                    https://github.com/Despical/PortBridge                   #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+# PortBridge connects your running Paper server to a public TCP relay.
+# Reload with /port reload. Invalid values reject the entire reload.
+# Active tunnels reconnect with the new settings; an explicitly stopped tunnel stays stopped.
+startup:
+  # Open a tunnel automatically when the plugin starts.
+  auto-start: true
+  # Delay after server startup before preparing Bore and checking the local listener.
+  # Range: 0..3600 seconds. The listener must answer Minecraft status requests.
+  delay-seconds: 3
+
+local:
+  # Read server-ip and server-port directly from the running Paper server.
+  # Wildcard bindings are contacted through 127.0.0.1.
+  auto-detect: true
+  # Used only when auto-detect is false. Supply a host without a port or URL scheme.
+  host: '127.0.0.1'
+  # Existing Minecraft listener port. Range: 1..65535; ignored when auto-detect is true.
+  port: 25565
+
+relay:
+  # Bore control server hostname or IP, without a port or URL scheme. Control port: TCP 7835.
+  host: 'bore.pub'
+  # Optional hostname shown to players instead of relay.host (for a custom relay).
+  # Public route checks also use this hostname; it must reach the forwarded Minecraft port.
+  public-host: ''
+  # 0 requests any free public port; 1-65535 requests a specific port.
+  port: 0
+  # If a requested public port is unavailable, retry once with a random port.
+  fallback-to-random: true
+  # Only set this when your own relay requires a shared secret. Maximum: 4096 characters.
+  # Passed through the client environment and redacted from logs. Keep it private.
+  secret: ''
+
+bore:
+  # Download Bore v0.6.0 with pinned archive and cached-executable SHA-256 verification.
+  # Supported: Windows x64/x86, Linux x64/ARM64, macOS x64/ARM64.
+  auto-download: true
+  # Optional Bore executable path. Relative paths resolve under plugins/PortBridge/.
+  # Empty uses the managed binary. Custom executables bypass managed digest verification.
+  executable: ''
+  # Total download timeout. Range: 5..600 seconds.
+  download-timeout-seconds: 60
+
+reconnect:
+  # Retry process failures and routes that reach health.failure-threshold.
+  enabled: true
+  # Initial retry delay. Range: 1..3600 seconds.
+  initial-delay-seconds: 5
+  # Maximum retry delay. Range: 1..3600 seconds; must be at least initial-delay-seconds.
+  max-delay-seconds: 60
+  # Retry limit. Range: 0..1000; 0 keeps retrying until the tunnel is stopped.
+  # Delays double gradually up to max-delay-seconds.
+  max-attempts: 0
+
+health:
+  # Verify Minecraft status and ping through the public relay without performing a login.
+  # Disabling public checks still requires the local listener check before tunnel startup.
+  enabled: true
+  # Time between public probes. Range: 5..3600 seconds.
+  interval-seconds: 30
+  # Timeout for local and public probes. Range: 1..30 seconds; cannot exceed interval-seconds.
+  timeout-seconds: 5
+  # Consecutive failed public probes before reconnection. Range: 1..100.
+  failure-threshold: 3
+
+notifications:
+  # Show the current connection address to joining players with portbridge.address.
+  on-admin-join: true
+
+# Log additional Bore output with the configured relay secret redacted.
+debug: false

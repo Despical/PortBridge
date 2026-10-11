@@ -1,0 +1,142 @@
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#                                                                             #
+#                                  PortBridge                                 #
+#                                 by Despical                                 #
+#                                                                             #
+#                    https://github.com/Despical/PortBridge                   #
+#                    https://docs.despical.dev/portbridge/                    #
+#                    https://github.com/Despical/PortBridge                   #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+# Plain English text. Values are rendered literally; formatting tags are not parsed.
+# Reload with /port reload. Invalid text or colors reject the entire reload.
+# Message values must be non-empty, single-line strings. Missing keys use bundled defaults.
+theme:
+  # Each theme entry requires a #RRGGBB color. Keep the value quoted for YAML.
+  accent: '#70C8C3'
+  secondary: '#87BDE8'
+  text: '#D9E3ED'
+  label: '#ADB9C8'
+  muted: '#8392A5'
+  separator: '#3C5267'
+  warning: '#D7B779'
+  error: '#E18E95'
+
+# Shared chat prefix, panel separator and section headings.
+prefix: 'PortBridge >'
+separator: '----------------------------------------'
+status-title: 'PORTBRIDGE'
+status-subtitle: 'Your server, a connection away.'
+help-title: 'PORTBRIDGE · HELP'
+help-subtitle: 'Open a tunnel. Share the address. Play together.'
+address-title: 'CONNECTION ADDRESS'
+connected-title: 'YOUR SERVER IS REACHABLE'
+relay-title: 'RELAY CONNECTED'
+address-subtitle: 'Share this address with your friends.'
+address-hint: 'Use Multiplayer > Direct Connection in Minecraft Java.'
+unverified-hint: 'Public route checks are disabled.'
+no-address: 'No public address yet. Use /pb start, then /pb status.'
+
+# Status-panel labels and route-check indicators.
+label-state: 'State'
+label-address: 'Address'
+label-local: 'Local server'
+label-relay: 'Relay'
+label-health: 'Public checks'
+health-enabled: 'Enabled'
+health-disabled: 'Disabled · route unverified'
+label-uptime: 'Connected for'
+label-latency: 'Route latency'
+label-retry: 'Next retry'
+label-detail: 'Details'
+label-error: 'Last error'
+
+# Display names for each tunnel lifecycle state.
+state-stopped: 'Stopped'
+state-preparing: 'Preparing Bore'
+state-connecting: 'Connecting'
+state-online: 'Online'
+state-degraded: 'Route unavailable'
+state-reconnecting: 'Reconnecting'
+state-failed: 'Failed'
+
+# Action labels and hover text. Controls respect the sender's command permissions.
+button-copy: '[ COPY ADDRESS ]'
+button-start: '[ START ]'
+button-stop: '[ STOP ]'
+button-restart: '[ RESTART ]'
+button-status: '[ REFRESH ]'
+hover-copy: 'Click to copy the public connection address.'
+hover-start: 'Start the tunnel to your local server.'
+hover-stop: 'Stop the tunnel. Remote players will disconnect.'
+hover-restart: 'Restart the tunnel. The public address may change.'
+hover-status: 'Refresh the current connection status.'
+
+# Command descriptions shown by /port help.
+help-status: 'Show the connection state and tunnel details.'
+help-address: 'Show and copy your public address.'
+help-start: 'Start the tunnel.'
+help-stop: 'Stop the tunnel.'
+help-restart: 'Restart the tunnel.'
+help-reload: 'Reload settings and messages.'
+help-hint: 'Aliases: /portbridge, /port, /pb. Click a command to fill it in.'
+
+# Command replies, display values and tunnel details. Placeholders use literal {name} substitution.
+'command-started': 'Starting the tunnel. The join address will appear when ready.'
+'command-already-running': 'The tunnel is already running or preparing. Use /port status for details.'
+'command-stopped': 'Stopping the tunnel and cancelling retries.'
+'command-already-stopped': 'The tunnel is already stopped.'
+'command-restarted': 'Restarting the tunnel. The join address may change.'
+'command-reloaded': 'Configuration and messages reloaded. An active tunnel will reconnect.'
+'command-reload-failed': 'Reload rejected: {reason}. The previous settings remain active.'
+'latency-value': '{millis} ms'
+'retry-value': '{seconds}s (attempt {attempt})'
+'uptime-hours': '{hours}h {minutes}m'
+'uptime-minutes': '{minutes}m {seconds}s'
+'uptime-seconds': '{seconds}s'
+'console-command-suffix': ' ({command})'
+'help-command-label': '  {command}'
+'detail-stopped': 'Tunnel is stopped.'
+'detail-preparing': 'Preparing Bore and checking Minecraft.'
+'detail-connecting': 'Connecting to {host}.'
+'detail-allocated': 'Relay allocated a port; checking the Minecraft route.'
+'detail-unverified': 'Relay connected. Public Minecraft checks are disabled.'
+'detail-online': 'Minecraft responds through the tunnel.'
+'detail-failed': 'Tunnel stopped after a connection failure.'
+'detail-reconnecting': 'Retrying in {seconds} seconds.'
+'error-local-listener': 'Local Minecraft server did not respond at {address}. Check the bind address, port and enable-status=true: {reason}'
+'error-start': 'Could not start tunnel: {reason}'
+'error-port-timeout': 'Bore did not allocate a public port within 20 seconds.'
+'error-output': 'Cannot read Bore output: {reason}'
+'error-public-probe': 'Public Minecraft check failed: {reason}'
+'error-process-exit': 'Bore exited with code {code}.'
+'error-process-output': 'Bore exited with code {code}: {output}'
+
+# ACF framework replies. Its own placeholders are substituted by the command framework.
+'acf':
+  'acf-core':
+    'permission_denied': 'I''m sorry, but you do not have permission to perform this command.'
+    'permission_denied_parameter': 'I''m sorry, but you do not have permission to perform this command.'
+    'error_generic_logged': 'An error occurred. This problem has been logged. Sorry for the inconvenience.'
+    'unknown_command': 'Unknown Command, please type /help'
+    'invalid_syntax': 'Usage: {command} {syntax}'
+    'error_prefix': 'Error: {message}'
+    'error_performing_command': 'I''m sorry, but there was an error performing this command.'
+    'info_message': '{message}'
+    'please_specify_one_of': 'Error: Please specify one of ({valid}).'
+    'must_be_a_number': 'Error: {num} must be a number.'
+    'must_be_min_length': 'Error: Must be at least {min} characters long.'
+    'must_be_max_length': 'Error: Must be at most {max} characters long.'
+    'please_specify_at_most': 'Error: Please specify a value at most {max}.'
+    'please_specify_at_least': 'Error: Please specify a value at least {min}.'
+    'not_allowed_on_console': 'Error: Console may not execute this command.'
+    'could_not_find_player': 'Error: Could not find a player by the name: {search}'
+    'no_command_matched_search': 'No command matched {search}.'
+    'help_page_information': '- Showing page {page} of {totalpages} ({results} results).'
+    'help_no_results': 'Error: No more results.'
+    'help_header': '=== Showing help for {commandprefix}{command} ==='
+    'help_format': '{command} {parameters} {separator} {description}'
+    'help_detailed_header': '=== Showing detailed help for {commandprefix}{command} ==='
+    'help_detailed_command_format': '{command} {parameters} {separator} {description}'
+    'help_detailed_parameter_format': '{syntaxorname}: {description}'
+    'help_search_header': '=== Search results for {commandprefix}{command} {search} ==='
