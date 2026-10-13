@@ -61,6 +61,8 @@ tasks.withType(Jar).configureEach {
 tasks.build { dependsOn tasks.shadowJar }
 
 tasks.javadoc {
+    options.windowTitle = "Port Bridge ${project.version} API"
+    options.docTitle = "Port Bridge ${project.version} API"
     options.encoding = 'UTF-8'
     options.locale = 'en_US'
     options.addStringOption('Xdoclint:all,-missing', '-quiet')
