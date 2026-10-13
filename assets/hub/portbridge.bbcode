@@ -1,24 +1,27 @@
-[size=4]
+[font=Verdana][size=4]
 [center][img]https://hub.despical.dev/plugin-icons/content/portbridge/cover-41c460c36f8e.png[/img]
 
-[size=7][b]Host locally. Play together.[/b][/size]
-[color=#70C8C3][b]A managed tunnel. A copyable address. Your Minecraft world.[/b][/color]
+[size=7][b]PortBridge[/b][/size]
+[size=5][b]Host locally. Play together.[/b][/size]
 
-Share a running Minecraft Java server with friends through a public TCP relay.
-PortBridge manages the connection, checks the route and helps you reconnect.
+[b]Managed tunnels  ·  Copyable addresses  ·  Automatic reconnection[/b]
+Keep your Minecraft world on your computer. Give friends a way in.
 
-[b]Free and open source  |  Paper 1.21.11+  |  Java 25[/b]
-[url=https://docs.despical.dev/portbridge/][b]Read the documentation[/b][/url]  |  [url=https://github.com/Despical/PortBridge][b]Browse the source[/b][/url][/center]
+[url=https://docs.despical.dev/portbridge/][b]Explore the documentation[/b][/url]  ·  [url=https://docs.despical.dev/portbridge/getting-started/][b]Open the installation guide[/b][/url][/center]
 
 Keep your world on your own computer and give friends an address they can use in ordinary Minecraft Java. [b]PortBridge connects your local server to a Bore relay, so you can share it without setting up router port forwarding.[/b]
 
 Start a small survival world, test a build with friends or open a temporary development server. The Minecraft server, your computer and the tunnel must remain running while people play.
 
-[hr]
+[hr][/hr]
 
-[center][size=3][color=#70C8C3][b]01 / A SIMPLE CONNECTION[/b][/color][/size]
-[size=6][b]From your local world to their server list.[/b][/size]
-[img]https://hub.despical.dev/plugin-icons/content/portbridge/flow-bc2e439ef8a9.png[/img][/center]
+[center][size=4][color=#70C8C3][b]01  /  A SIMPLE CONNECTION[/b][/color][/size]
+[size=6][b]From your local world to their server list.[/b][/size][/center]
+
+Your Minecraft server stays where it is. PortBridge detects its bind address and port, starts the Bore client and connects to your chosen relay. The relay allocates a public port that carries players' connections back to your local server.
+
+[center][img]https://hub.despical.dev/plugin-icons/content/portbridge/flow-bc2e439ef8a9.png[/img]
+[size=4]Your server connects to the relay. Friends join using the public address.[/size][/center]
 
 [list=1]
 [*][b]Run your server.[/b] PortBridge detects the running server's bind address and Minecraft port.
@@ -28,60 +31,66 @@ Start a small survival world, test a build with friends or open a temporary deve
 
 PortBridge checks Minecraft's status response and matching ping through the local listener and, by default, the public route. A relay allocation alone does not mean the route is verified.
 
-[hr]
+[hr][/hr]
 
-[center][size=3][color=#70C8C3][b]02 / MANAGED FOR YOU[/b][/color][/size]
+[center][size=4][color=#70C8C3][b]02  /  MANAGED FOR YOU[/b][/color][/size]
 [size=6][b]A connection you can see and control.[/b][/size][/center]
 
-[list]
-[*][b]Automatic startup.[/b] Open the tunnel shortly after Paper starts, or disable it and connect when you are ready.
-[*][b]Managed Bore installation.[/b] Download the pinned Bore v0.6.0 client automatically with SHA-256 archive and cached-binary verification. A custom executable path is also supported.
-[*][b]Clickable address panels.[/b] Copy the public address from chat, inspect connection details and use permission-aware command buttons.
-[*][b]Route health and latency.[/b] Check Minecraft connectivity through the tunnel and view measured ping latency, retry timing and the latest diagnostic.
-[*][b]Automatic reconnection.[/b] Configure retry delays, failure thresholds and attempt limits. An explicit stop cancels automatic reconnection.
-[*][b]Your preferred public port.[/b] Request a port or let the relay allocate one. Optional fallback tries a random port when the requested port is occupied.
-[*][b]Your own relay.[/b] Configure a private Bore server, optional shared secret and displayed public hostname.
-[*][b]Your own messages.[/b] Customize command replies, labels, buttons, hover text, connection details, timing values and ACF permission/error replies in messages.yml.
-[/list]
+[b]Connect when you are ready.[/b] Open the tunnel shortly after Paper starts, or disable automatic startup and connect with [b]/port start[/b]. The pinned [b]Bore v0.6.0[/b] client is downloaded automatically with SHA-256 archive and cached-executable verification. A custom executable path is also supported.
+
+[b]Keep the address close.[/b] Run [b]/port address[/b], copy it from the console or click [b]Copy Address[/b] in chat. The panels include permission-aware command buttons, measured ping latency, retry timing and the latest diagnostic.
+
+[b]Recover from interruptions.[/b] Configure retry delays, route failure thresholds and attempt limits. Automatic reconnection helps restore the connection, while an explicit [b]/port stop[/b] closes the tunnel and cancels retries.
+
+[b]Choose your public port.[/b] Request a port or let the relay allocate one. Optional fallback tries a random port when your requested port is occupied. Port availability depends on the relay, and an address can change after a restart or reconnection.
+
+[b]Make it fit your server.[/b] Use a private Bore relay with an optional shared secret and displayed hostname. Customize command replies, labels, buttons, hover text, connection details, timing values and ACF permission/error replies in [b]messages.yml[/b].
 
 Downloads, process output and network checks run away from the server thread. The managed Bore process is closed when the plugin shuts down.
 
-[hr]
+[hr][/hr]
 
-[center][size=3][color=#70C8C3][b]03 / YOUR FIRST TUNNEL[/b][/color][/size]
+[center][size=4][color=#70C8C3][b]03  /  YOUR FIRST TUNNEL[/b][/color][/size]
 [size=6][b]Install. Start. Share.[/b][/size][/center]
 
-[b]Requirements:[/b] Paper for Minecraft [b]1.21.11 or later[/b], [b]Java 25[/b] and an outbound connection to your chosen Bore relay. Keep [b]enable-status=true[/b] in server.properties. Folia and Spigot are not supported.
+[b]Requirements:[/b] Paper for Minecraft [b]1.21.11 or later[/b], [b]Java 25 or newer[/b] and an outbound connection to your chosen Bore relay. Keep [b]enable-status=true[/b] in server.properties. Folia and Spigot are not supported.
 
 [list=1]
 [*]Download [b]portbridge-1.0.0.jar[/b] and place it in your server's [b]plugins[/b] folder.
 [*]Start the server. Default config.yml and messages.yml files are installed when they are missing.
 [*]The default configuration starts a tunnel automatically. On the first connection, the supported Bore client is downloaded if needed.
-[*]Run [b]/pb address[/b], copy the address and send it to your friends.
+[*]Run [b]/port address[/b], copy the address and send it to your friends.
 [/list=1]
 
-[code]/pb status
-/pb address[/code]
+[center][b]/port help[/b]
+Find your controls.
 
-If automatic startup is disabled, use [b]/pb start[/b]. The whitelist, account authentication and Minecraft client-version requirements still apply.
+[b]/port status[/b]
+Check the connection.
 
-[url=https://docs.despical.dev/portbridge/getting-started/][b]Follow the installation guide[/b][/url]  |  [url=https://docs.despical.dev/portbridge/compatibility/][b]Check compatibility[/b][/url]
+[b]/port address[/b]
+Copy the address and invite your friends.
+[/center]
 
-[hr]
+If automatic startup is disabled, use [b]/port start[/b]. The whitelist, account authentication and Minecraft client-version requirements still apply.
 
-[center][size=3][color=#70C8C3][b]04 / COMMANDS THAT STAY CLOSE[/b][/color][/size]
+[url=https://docs.despical.dev/portbridge/getting-started/][b]Follow the installation guide[/b][/url]  ·  [url=https://docs.despical.dev/portbridge/compatibility/][b]Check compatibility[/b][/url]
+
+[hr][/hr]
+
+[center][size=4][color=#70C8C3][b]04  /  COMMANDS THAT STAY CLOSE[/b][/color][/size]
 [size=6][b]Manage the tunnel from chat or console.[/b][/size][/center]
 
-[b]/pb[/b], [b]/port[/b] and [b]/portbridge[/b] share the same commands.
+[b]/port[/b], [b]/pb[/b] and [b]/portbridge[/b] share the same commands.
 
 [list]
-[*][b]/pb status[/b] - View the state, local target, relay, latency, retries and latest error. The base command also shows status.
-[*][b]/pb help[/b] - View available commands with clickable suggestions.
-[*][b]/pb address[/b] - View and copy the public connection address. [b]/pb ip[/b] is an alias.
-[*][b]/pb start[/b] - Start a tunnel in the background.
-[*][b]/pb stop[/b] - Close the tunnel and cancel automatic retries.
-[*][b]/pb restart[/b] - Start a new tunnel session; the public address may change.
-[*][b]/pb reload[/b] - Validate settings and messages, then reconnect an active tunnel. An explicitly stopped tunnel stays stopped.
+[*][b]/port status[/b] - View the state, local target, relay, latency, retries and latest error. The base command also shows status.
+[*][b]/port help[/b] - View available commands with clickable suggestions.
+[*][b]/port address[/b] - View and copy the public connection address. [b]/port ip[/b] is an alias.
+[*][b]/port start[/b] - Start a tunnel in the background.
+[*][b]/port stop[/b] - Close the tunnel and cancel automatic retries.
+[*][b]/port restart[/b] - Start a new tunnel session; the public address may change.
+[*][b]/port reload[/b] - Validate settings and messages, then reconnect an active tunnel. An explicitly stopped tunnel stays stopped.
 [/list]
 
 [spoiler=Permissions for administrators and trusted players]
@@ -95,18 +104,18 @@ If automatic startup is disabled, use [b]/pb start[/b]. The whitelist, account a
 Chat controls appear only when the sender has the corresponding permission.
 [/spoiler]
 
-[url=https://docs.despical.dev/portbridge/commands/][b]Command reference[/b][/url]  |  [url=https://docs.despical.dev/portbridge/permissions/][b]Permission reference[/b][/url]
+[url=https://docs.despical.dev/portbridge/commands/][b]Command reference[/b][/url]  ·  [url=https://docs.despical.dev/portbridge/permissions/][b]Permission reference[/b][/url]
 
-[hr]
+[hr][/hr]
 
-[center][size=3][color=#70C8C3][b]05 / MAKE IT YOURS[/b][/color][/size]
+[center][size=4][color=#70C8C3][b]05  /  MAKE IT YOURS[/b][/color][/size]
 [size=6][b]Choose your relay. Tune your connection.[/b][/size][/center]
 
 [b]config.yml[/b] controls startup, local port detection, relay settings, Bore installation, reconnection, health checks and joining-player notifications.
 
 [b]messages.yml[/b] controls the chat design and every plugin command reply. Use literal text, {name} placeholders and quoted #RRGGBB theme colors. Missing keys fall back to bundled defaults; existing files are preserved. External diagnostic values keep their original text.
 
-Edit either file and run [b]/pb reload[/b]. Invalid settings or messages reject the reload and retain the previous configuration.
+Edit either file and run [b]/port reload[/b]. Invalid settings or messages reject the reload and retain the previous configuration.
 
 [spoiler=Example: connect through your own Bore relay]
 Run a compatible Bore relay on a reachable server, then set your relay hostname and secret in config.yml:
@@ -119,11 +128,11 @@ Run a compatible Bore relay on a reachable server, then set your relay hostname 
 The relay's control port is TCP 7835; allocated public ports must also be reachable. The shared secret authenticates tunnel creation and does not encrypt the forwarded traffic.
 [/spoiler]
 
-[url=https://docs.despical.dev/portbridge/configuration/config/][b]Complete config.yml reference[/b][/url]  |  [url=https://docs.despical.dev/portbridge/configuration/messages/][b]Complete messages.yml reference[/b][/url]
+[url=https://docs.despical.dev/portbridge/configuration/config/][b]Complete config.yml reference[/b][/url]  ·  [url=https://docs.despical.dev/portbridge/configuration/messages/][b]Complete messages.yml reference[/b][/url]
 
-[hr]
+[hr][/hr]
 
-[center][size=3][color=#70C8C3][b]06 / BEFORE YOU CONNECT[/b][/color][/size]
+[center][size=4][color=#70C8C3][b]06  /  BEFORE YOU CONNECT[/b][/color][/size]
 [size=6][b]Know what your address represents.[/b][/size][/center]
 
 [spoiler=Does it change my Minecraft port or router settings?]
@@ -139,15 +148,18 @@ PortBridge forwards Minecraft Java TCP traffic. It does not expose Bedrock or UD
 Windows x64/x86 and Linux/macOS x64/ARM64. Other platforms need a compatible executable configured in bore.executable.
 [/spoiler]
 [spoiler=What if the address is not reachable?]
-Check /pb status, keep enable-status=true, confirm your local Minecraft listener is running and check the relay's availability. By default, public route failures trigger reconnection after the configured failure threshold. Disabling public health checks leaves the route unverified; local listener checks still run.
+Check /port status, keep enable-status=true, confirm your local Minecraft listener is running and check the relay's availability. By default, public route failures trigger reconnection after the configured failure threshold. Disabling public health checks leaves the route unverified; local listener checks still run.
 [/spoiler]
 
 [url=https://docs.despical.dev/portbridge/troubleshooting/][b]Open the troubleshooting guide[/b][/url]
 
-[hr]
+[hr][/hr]
 
-[center][size=6][b]Your next game starts with one address.[/b][/size]
+[center][size=5][b]Your next game starts with one address.[/b][/size]
 Free and open source under GPL-3.0-or-later. Created by [b]Despical[/b].
 
-[url=https://docs.despical.dev/portbridge/][b]Documentation[/b][/url]  |  [url=https://github.com/Despical/PortBridge][b]Source code[/b][/url]  |  [url=https://javadoc.despical.dev/portbridge/][b]Javadocs[/b][/url][/center]
-[/size]
+[url=https://docs.despical.dev/portbridge/getting-started/][b]Installation guide[/b][/url]
+[url=https://docs.despical.dev/portbridge/][b]Documentation[/b][/url]  ·  [url=https://github.com/Despical/PortBridge][b]Source code[/b][/url]  ·  [url=https://discord.gg/uXVU8jmtpU][b]Discord support[/b][/url]
+[url=https://javadoc.despical.dev/portbridge/][b]Javadocs[/b][/url]
+[/center]
+[/size][/font]
