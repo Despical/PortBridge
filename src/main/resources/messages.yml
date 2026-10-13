@@ -5,10 +5,10 @@
 #                                                                             #
 #                    https://github.com/Despical/PortBridge                   #
 #                    https://docs.despical.dev/portbridge/                    #
-#                    https://github.com/Despical/PortBridge                   #
+#                                                                             #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-# Plain English text. Values are rendered literally; formatting tags are not parsed.
+# Values are rendered literally; formatting tags are not parsed.
 # Reload with /port reload. Invalid text or colors reject the entire reload.
 # Message values must be non-empty, single-line strings. Missing keys use bundled defaults.
 theme:

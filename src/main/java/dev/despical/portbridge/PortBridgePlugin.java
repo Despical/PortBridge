@@ -72,6 +72,7 @@ public final class PortBridgePlugin extends JavaPlugin {
             initializeTunnel();
             registerCommands();
             registerListeners();
+
             if (settings.startup().autoStart()) {
                 scheduleStartup();
                 getLogger().info("Automatic tunnel startup scheduled in " + settings.startup().delaySeconds() + " seconds.");
@@ -86,6 +87,7 @@ public final class PortBridgePlugin extends JavaPlugin {
 
     private void loadConfiguration() {
         saveDefaultConfig();
+
         settingsLoader = new SettingsLoader(this);
         settings = settingsLoader.load();
         messages = new Messages(this);
@@ -153,6 +155,7 @@ public final class PortBridgePlugin extends JavaPlugin {
     public void reloadBridge() {
         BridgeSettings replacement = settingsLoader.load();
         messages.reload();
+
         configureCommandMessages();
         settings = replacement;
         tunnel.reconfigure(replacement);
@@ -179,7 +182,8 @@ public final class PortBridgePlugin extends JavaPlugin {
             TunnelSnapshot current = snapshot();
 
             if (current.state() != snapshot.state() || !current.address().equals(snapshot.address())
-                || !Objects.equals(current.connectedAt(), snapshot.connectedAt())) {
+                || !Objects.equals(current.connectedAt(), snapshot.connectedAt())
+            ) {
                 return;
             }
 

@@ -154,7 +154,7 @@ Install **Java 25** (build toolchain) and **Git**, then open the repository dire
 
 On Windows, use `gradlew.bat clean build`.
 
-The build runs unit tests and creates the plugin and source JARs under `build/libs/`. Install `portbridge-<version>.jar`; the `-plain`, `-sources` and Javadoc JARs are for developers and are not the server plugin.
+The build runs unit tests and creates the plugin and plain JARs under `build/libs/`. Install `portbridge-<version>.jar`; the `-plain` and Javadoc JARs are for developers and are not the server plugin.
 
 Javadocs are optional: run `./gradlew javadocJar` (Windows: `gradlew.bat javadocJar`) to generate `build/docs/javadoc/` and the documentation JAR. CI runs the build and validates Javadocs separately.
 

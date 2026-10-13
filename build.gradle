@@ -8,7 +8,6 @@ version = '1.0.0'
 
 java {
     toolchain.languageVersion = JavaLanguageVersion.of(25)
-    withSourcesJar()
 }
 
 repositories {
@@ -66,9 +65,9 @@ tasks.javadoc {
     options.addBooleanOption('Werror', true)
 }
 
-// Documentation is opt-in; a regular build produces binaries and sources only.
 tasks.register('javadocJar', Jar) {
     dependsOn tasks.javadoc
     archiveClassifier = 'javadoc'
+
     from(tasks.javadoc.destinationDir)
 }
