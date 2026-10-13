@@ -1,6 +1,6 @@
 # Security Policy
 
-Security reports are taken seriously. If you find a vulnerability in PortBridge,
+Security reports are taken seriously. If you find a vulnerability in Port Bridge,
 please report it privately instead of opening a public issue.
 
 ## Reporting a Vulnerability
@@ -38,7 +38,7 @@ issue tracker instead.
 
 ## Supported Versions
 
-Only the latest public version of PortBridge is currently supported. If you
+Only the latest public version of Port Bridge is currently supported. If you
 are running an older version, please update before reporting unless the same
 issue also exists on the latest version.
 

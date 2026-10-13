@@ -1,10 +1,10 @@
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                                                             #
-#                                  PortBridge                                 #
+#                                  Port Bridge                                 #
 #                                 by Despical                                 #
 #                                                                             #
 #                    https://github.com/Despical/PortBridge                   #
-#                    https://docs.despical.dev/portbridge/                    #
+#                    https://docs.despical.dev/port-bridge/                    #
 #                                                                             #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
@@ -23,11 +23,11 @@ theme:
   error: '#E18E95'
 
 # Shared chat prefix, panel separator and section headings.
-prefix: 'PortBridge >'
+prefix: 'Port Bridge >'
 separator: '----------------------------------------'
-status-title: 'PORTBRIDGE'
+status-title: 'PORT BRIDGE'
 status-subtitle: 'Your server, a connection away.'
-help-title: 'PORTBRIDGE · HELP'
+help-title: 'PORT BRIDGE · HELP'
 help-subtitle: 'Open a tunnel. Share the address. Play together.'
 address-title: 'CONNECTION ADDRESS'
 connected-title: 'YOUR SERVER IS REACHABLE'

@@ -1,6 +1,6 @@
-![PortBridge cover with a cyan network bridge connecting two Minecraft islands](assets/portbridge-cover.png)
+![Port Bridge cover with a cyan network bridge connecting two Minecraft islands](assets/portbridge-cover.png)
 
-# PortBridge
+# Port Bridge
 
 [![CI](https://github.com/Despical/PortBridge/actions/workflows/build.yml/badge.svg)](https://github.com/Despical/PortBridge/actions/workflows/build.yml)
 ![Java](https://img.shields.io/badge/Java-25-007396.svg)
@@ -8,9 +8,9 @@
 ![Paper](https://img.shields.io/badge/Paper-1.21.11%2B-62b47a)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
 
-PortBridge shares a local Minecraft Java server through a managed [Bore TCP tunnel](https://github.com/ekzhang/bore), with a copyable address, route checks and automatic reconnection.
+Port Bridge shares a local Minecraft Java server through a managed [Bore TCP tunnel](https://github.com/ekzhang/bore), with a copyable address, route checks and automatic reconnection.
 
-Created by **Despical**. Download it from the [Plugin Hub](https://hub.despical.dev/plugins/port-bridge) and read the [documentation](https://docs.despical.dev/portbridge/) for setup details and relay settings.
+Created by **Despical**. Download it from the [Plugin Hub](https://hub.despical.dev/plugins/port-bridge) and read the [documentation](https://docs.despical.dev/port-bridge/) for setup details and relay settings.
 
 ---
 
@@ -31,15 +31,15 @@ Created by **Despical**. Download it from the [Plugin Hub](https://hub.despical.
 
 ## Installation
 
-PortBridge targets **Paper 1.21.11 and later**. Use **Java 25 or newer** for every supported server version. Folia is not supported.
+Port Bridge targets **Paper 1.21.11 and later**. Use **Java 25 or newer** for every supported server version. Folia is not supported.
 
 1. Download the plugin JAR from the [Plugin Hub](https://hub.despical.dev/plugins/port-bridge) or [GitHub Releases](https://github.com/Despical/PortBridge/releases/latest), or follow [Build from Source](#build-from-source) below.
-2. Stop the server and place `portbridge-<version>.jar` in its `plugins/` directory.
-3. Keep `enable-status=true` in Minecraft's `server.properties` so PortBridge can check the local listener and public route.
-4. Start the server with the Java version required by your Paper release and check the console for PortBridge startup and the connection address.
+2. Stop the server and place `port-bridge-<version>.jar` in its `plugins/` directory.
+3. Keep `enable-status=true` in Minecraft's `server.properties` so Port Bridge can check the local listener and public route.
+4. Start the server with the Java version required by your Paper release and check the console for Port Bridge startup and the connection address.
 5. Run `/port address` as an operator or with the corresponding [permission](#permissions).
 
-PortBridge installs `config.yml` and `messages.yml` under `plugins/PortBridge/` when they are missing. On the first tunnel start, it downloads Bore **v0.6.0** unless a verified cached binary or configured executable is available. Existing configuration files are preserved.
+Port Bridge installs `config.yml` and `messages.yml` under `plugins/PortBridge/` when they are missing. On the first tunnel start, it downloads Bore **v0.6.0** unless a verified cached binary or configured executable is available. Existing configuration files are preserved.
 
 Automatic downloads support Windows x64/x86 and Linux/macOS x64/ARM64. Other platforms require a compatible executable configured in `bore.executable`.
 
@@ -138,11 +138,11 @@ bore server --secret your-private-secret
 
 Set `relay.host` and `relay.secret` to match that server. Its TCP control port 7835 and allocated public ports must be reachable. Set `relay.public-host` only when clients and the Minecraft server can reach the forwarded port through that hostname.
 
-Bore's secret authenticates tunnel creation; it does not encrypt forwarded traffic. Minecraft's own encryption, when enabled by its authentication flow, remains intact. PortBridge forwards TCP only, does not preserve real player IP addresses and does not expose Bedrock or UDP query services. A relay may add latency.
+Bore's secret authenticates tunnel creation; it does not encrypt forwarded traffic. Minecraft's own encryption, when enabled by its authentication flow, remains intact. Port Bridge forwards TCP only, does not preserve real player IP addresses and does not expose Bedrock or UDP query services. A relay may add latency.
 
 ---
 
-All command replies, status details, duration/latency labels and ACF permission/error replies can be customized in `messages.yml`. Templates use literal `{name}` placeholders; diagnostic `{reason}` and `{output}` values preserve the original exception or Bore output. Reload applies message changes to both chat panels and the command framework. See the [message reference](https://docs.despical.dev/portbridge/configuration/messages/).
+All command replies, status details, duration/latency labels and ACF permission/error replies can be customized in `messages.yml`. Templates use literal `{name}` placeholders; diagnostic `{reason}` and `{output}` values preserve the original exception or Bore output. Reload applies message changes to both chat panels and the command framework. See the [message reference](https://docs.despical.dev/port-bridge/configuration/messages/).
 
 ## Build from Source
 
@@ -154,13 +154,19 @@ Install **Java 25** (build toolchain) and **Git**, then open the repository dire
 
 On Windows, use `gradlew.bat clean build`.
 
-The build runs unit tests and creates the plugin and plain JARs under `build/libs/`. Install `portbridge-<version>.jar`; the `-plain` and Javadoc JARs are for developers and are not the server plugin.
+The build runs unit tests and creates the plugin and plain JARs under `build/libs/`. Install `port-bridge-<version>.jar`; the `-plain` and Javadoc JARs are for developers and are not the server plugin.
 
 Javadocs are optional: run `./gradlew javadocJar` (Windows: `gradlew.bat javadocJar`) to generate `build/docs/javadoc/` and the documentation JAR. CI runs the build and validates Javadocs separately.
 
 Tests cover settings validation, retry limits, Bore output parsing, binary cache verification, archive extraction, Minecraft status packets and chat text layout. These checks use local fixtures and do not establish compatibility with every Paper release or prove live public-relay reachability.
 
 The 1.0.0 release also passed isolated runtime checks on Paper 1.21.11 build 132 with Java 25 and Paper 26.3 build 157 with Java 25: startup, command registration, custom replies and permission errors, message reload validation and separate listener registration.
+
+---
+
+## bStats metrics
+
+Port Bridge collects anonymous usage statistics through [bStats](https://bstats.org/plugin/bukkit/Port%20Bridge/34669), including server counts and version adoption. Server owners can opt out by setting `enabled: false` in `plugins/bStats/config.yml` and restarting the server.
 
 ---
 
@@ -174,4 +180,4 @@ Use four spaces, focused classes, English documentation and the existing GPL lic
 
 ## License
 
-PortBridge is licensed under [GPL-3.0-or-later](LICENSE). Third-party components retain their own licenses and bundled notices.
+Port Bridge is licensed under [GPL-3.0-or-later](LICENSE). Third-party components retain their own licenses and bundled notices.

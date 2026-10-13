@@ -34,6 +34,7 @@ import dev.despical.portbridge.tunnel.TunnelState;
 
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
+import org.bstats.bukkit.Metrics;
 
 import java.util.Locale;
 import java.util.Objects;
@@ -64,6 +65,7 @@ public final class PortBridgePlugin extends JavaPlugin {
     private TunnelService tunnel;
     private PaperCommandManager commands;
     private BukkitTask startupTask;
+    private Metrics metrics;
 
     @Override
     public void onEnable() {
@@ -72,6 +74,7 @@ public final class PortBridgePlugin extends JavaPlugin {
             initializeTunnel();
             registerCommands();
             registerListeners();
+            initializeMetrics();
 
             if (settings.startup().autoStart()) {
                 scheduleStartup();
@@ -123,6 +126,14 @@ public final class PortBridgePlugin extends JavaPlugin {
             startupTask = null;
             tunnel.start();
         }, Math.max(1L, settings.startup().delaySeconds() * 20L));
+    }
+
+    private void initializeMetrics() {
+        try {
+            metrics = new Metrics(this, 34669);
+        } catch (Exception metricsError) {
+            getLogger().warning("bStats could not start: " + metricsError.getMessage());
+        }
     }
 
     public BridgeSettings settings() {
@@ -214,6 +225,11 @@ public final class PortBridgePlugin extends JavaPlugin {
     @Override
     public void onDisable() {
         cancelStartup();
+
+        if (metrics != null) {
+            metrics.shutdown();
+            metrics = null;
+        }
 
         if (commands != null) {
             commands.unregisterCommands();

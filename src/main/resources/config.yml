@@ -1,14 +1,14 @@
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                                                             #
-#                                  PortBridge                                 #
+#                                  Port Bridge                                 #
 #                                 by Despical                                 #
 #                                                                             #
 #                    https://github.com/Despical/PortBridge                   #
-#                    https://docs.despical.dev/portbridge/                    #
+#                    https://docs.despical.dev/port-bridge/                    #
 #                                                                             #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-# PortBridge connects your running server to a public TCP relay.
+# Port Bridge connects your running server to a public TCP relay.
 # Reload with /port reload. Invalid values reject the entire reload.
 # Active tunnels reconnect with the new settings; an explicitly stopped tunnel stays stopped.
 startup:

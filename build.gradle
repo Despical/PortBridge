@@ -20,6 +20,7 @@ dependencies {
     compileOnly 'io.papermc.paper:paper-api:1.21.11-R0.1-SNAPSHOT'
     implementation 'co.aikar:acf-paper:0.5.1-SNAPSHOT'
     implementation 'org.apache.commons:commons-compress:1.28.0'
+    implementation 'org.bstats:bstats-bukkit:3.2.1'
 
     testImplementation platform('org.junit:junit-bom:5.14.4')
     testImplementation 'org.junit.jupiter:junit-jupiter'
@@ -48,10 +49,11 @@ tasks.shadowJar {
     relocate 'co.aikar.commands', 'dev.despical.portbridge.lib.acf'
     relocate 'co.aikar.locales', 'dev.despical.portbridge.lib.locales'
     relocate 'org.apache.commons', 'dev.despical.portbridge.lib.commons'
+    relocate 'org.bstats', 'dev.despical.portbridge.lib.bstats'
 }
 
 tasks.withType(Jar).configureEach {
-    archiveBaseName = 'portbridge'
+    archiveBaseName = 'port-bridge'
     manifest.attributes('paperweight-mappings-namespace': 'mojang')
     from('LICENSE') { into 'META-INF' }
 }

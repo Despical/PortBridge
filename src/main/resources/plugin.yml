@@ -3,7 +3,7 @@ version: '${version}'
 main: dev.despical.portbridge.PortBridgePlugin
 api-version: '1.21.11'
 authors: [Despical]
-website: https://docs.despical.dev/portbridge/
+website: https://docs.despical.dev/port-bridge/
 description: Share your local server through a managed Bore TCP tunnel.
 
 permissions:
