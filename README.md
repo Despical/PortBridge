@@ -1,16 +1,22 @@
+<p align="center">
+  <img src="assets/portbridge-icon.svg" width="128" height="128" alt="Port Bridge icon">
+</p>
+
+<h1 align="center">Port Bridge</h1>
+
+<p align="center">Port Bridge shares a local Minecraft Java server through a managed <a href="https://github.com/ekzhang/bore">Bore TCP tunnel</a>, with a copyable address, route checks and automatic reconnection.</p>
+
+<p align="center">
+  <a href="https://github.com/Despical/PortBridge/actions/workflows/build.yml"><img src="https://github.com/Despical/PortBridge/actions/workflows/build.yml/badge.svg" alt="CI"></a>
+  <img src="https://img.shields.io/badge/Java-25-007396.svg" alt="Java 25">
+  <img src="https://img.shields.io/badge/Gradle-9.8.1-079ec0?logo=gradle&amp;logoColor=white" alt="Gradle 9.8.1">
+  <img src="https://img.shields.io/badge/Paper-1.21.11%2B-62b47a" alt="Paper 1.21.11+">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License: GPL v3"></a>
+</p>
+
+<p align="center">Created by <strong>Despical</strong>. Download it from the <a href="https://hub.despical.dev/plugins/port-bridge">Plugin Hub</a> or <a href="https://www.spigotmc.org/resources/port-bridge-local-server-tunnels.139616/">SpigotMC</a> and read the <a href="https://docs.despical.dev/port-bridge/">documentation</a> for setup details and relay settings.</p>
+
 ![Port Bridge cover with a cyan network bridge connecting two Minecraft islands](assets/portbridge-cover.png)
-
-# Port Bridge
-
-[![CI](https://github.com/Despical/PortBridge/actions/workflows/build.yml/badge.svg)](https://github.com/Despical/PortBridge/actions/workflows/build.yml)
-![Java](https://img.shields.io/badge/Java-25-007396.svg)
-![Gradle](https://img.shields.io/badge/Gradle-9.8.0-079ec0?logo=gradle&logoColor=white)
-![Paper](https://img.shields.io/badge/Paper-1.21.11%2B-62b47a)
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
-
-Port Bridge shares a local Minecraft Java server through a managed [Bore TCP tunnel](https://github.com/ekzhang/bore), with a copyable address, route checks and automatic reconnection.
-
-Created by **Despical**. Download it from the [Plugin Hub](https://hub.despical.dev/plugins/port-bridge) or [SpigotMC](https://www.spigotmc.org/resources/port-bridge-local-server-tunnels.139616/) and read the [documentation](https://docs.despical.dev/port-bridge/) for setup details and relay settings.
 
 ---
 
