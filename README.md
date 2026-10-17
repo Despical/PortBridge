@@ -14,7 +14,9 @@
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License: GPL v3"></a>
 </p>
 
-<p align="center">Created by <strong>Despical</strong>. Download it from the <a href="https://hub.despical.dev/plugins/port-bridge">Plugin Hub</a> or <a href="https://www.spigotmc.org/resources/port-bridge-local-server-tunnels.139616/">SpigotMC</a> and read the <a href="https://docs.despical.dev/port-bridge/">documentation</a> for setup details and relay settings.</p>
+<p align="center"><a href="https://hub.despical.dev/plugins/port-bridge">Hub</a> · <a href="https://www.spigotmc.org/resources/port-bridge-local-server-tunnels.139616/">SpigotMC</a></p>
+
+<p align="center">Read the <a href="https://docs.despical.dev/port-bridge/">documentation</a> for setup instructions, configuration details and relay settings.</p>
 
 ![Port Bridge cover with a cyan network bridge connecting two Minecraft islands](assets/portbridge-cover.png)
 
