@@ -33,8 +33,6 @@
 - Private relay support with an optional shared secret and displayed hostname.
 - Background downloads and network checks, with managed process cleanup on shutdown.
 
----
-
 ## Installation
 
 Port Bridge targets **Paper 1.21.11 and later**. Use **Java 25 or newer** for every supported server version. Folia is not supported.
@@ -51,8 +49,6 @@ Automatic downloads support Windows x64/x86 and Linux/macOS x64/ARM64. Other pla
 
 Friends need no additional software. Keep the computer, Minecraft server and tunnel running. The server's whitelist, account authentication and Minecraft version requirements still apply.
 
----
-
 ## Getting started
 
 ```text
@@ -64,8 +60,6 @@ Friends need no additional software. Keep the computer, Minecraft server and tun
 Copy the address from the console or click the chat panel's Copy Address button. Friends enter it in Minecraft Java's **Multiplayer > Direct Connection** screen.
 
 The default configuration opens a tunnel shortly after server startup. If automatic startup is disabled, run `/port start`. `/port stop` closes the tunnel and cancels automatic retries; `/port restart` opens a new session.
-
----
 
 ## Commands
 
@@ -81,8 +75,6 @@ The default configuration opens a tunnel shortly after server startup. If automa
 | `/port restart` | Restart the tunnel; the public address may change. |
 | `/port reload` | Validate settings and messages, then reconnect an active tunnel. |
 
----
-
 ## Permissions
 
 `portbridge.admin` grants all command permissions. Every permission defaults to operators.
@@ -95,8 +87,6 @@ The default configuration opens a tunnel shortly after server startup. If automa
 | `portbridge.reload` | Reload configuration and messages. |
 
 Chat panels show controls only when the sender has the matching permission. Joining-player notifications use `portbridge.address` and `notifications.on-admin-join`.
-
----
 
 ## Configuration
 
@@ -132,8 +122,6 @@ The **local port** belongs to the running Minecraft server. The **public port** 
 
 Connection addresses can change after a restart or reconnection. A requested public port remains subject to relay availability and policy. Disabling `health.enabled` skips public route verification; the local Minecraft listener is still checked before a tunnel starts.
 
----
-
 ## Custom relay
 
 The public `bore.pub` service is operated independently and may be unavailable. To use your own Bore relay, run:
@@ -145,8 +133,6 @@ bore server --secret your-private-secret
 Set `relay.host` and `relay.secret` to match that server. Its TCP control port 7835 and allocated public ports must be reachable. Set `relay.public-host` only when clients and the Minecraft server can reach the forwarded port through that hostname.
 
 Bore's secret authenticates tunnel creation; it does not encrypt forwarded traffic. Minecraft's own encryption, when enabled by its authentication flow, remains intact. Port Bridge forwards TCP only, does not preserve real player IP addresses and does not expose Bedrock or UDP query services. A relay may add latency.
-
----
 
 All command replies, status details, duration/latency labels and ACF permission/error replies can be customized in `messages.yml`. Templates use literal `{name}` placeholders; diagnostic `{reason}` and `{output}` values preserve the original exception or Bore output. Reload applies message changes to both chat panels and the command framework. See the [message reference](https://docs.despical.dev/port-bridge/configuration/messages/).
 
@@ -168,21 +154,15 @@ Tests cover settings validation, retry limits, Bore output parsing, binary cache
 
 The 1.0.0 release also passed isolated runtime checks on Paper 1.21.11 build 132 with Java 25 and Paper 26.3 build 157 with Java 25: startup, command registration, custom replies and permission errors, message reload validation and separate listener registration.
 
----
-
 ## bStats metrics
 
 Port Bridge collects anonymous usage statistics through [bStats](https://bstats.org/plugin/bukkit/Port%20Bridge/34669), including server counts and version adoption. Server owners can opt out by setting `enabled: false` in `plugins/bStats/config.yml` and restarting the server.
-
----
 
 ## Security and contributing
 
 Report vulnerabilities privately as described in [SECURITY.md](SECURITY.md). Follow [CONTRIBUTING.md](CONTRIBUTING.md) and the [Code of Conduct](CODE_OF_CONDUCT.md).
 
 Use four spaces, focused classes, English documentation and the existing GPL license/class Javadoc headers. Preserve command permissions, configuration keys and tunnel lifecycle behavior unless a change explicitly requires otherwise. Remove relay secrets and private server details from shared logs and configuration examples.
-
----
 
 ## License
 
