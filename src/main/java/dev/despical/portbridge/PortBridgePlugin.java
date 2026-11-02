@@ -75,6 +75,7 @@ public final class PortBridgePlugin extends JavaPlugin {
             registerCommands();
             registerListeners();
             initializeMetrics();
+            checkForUpdates();
 
             if (settings.startup().autoStart()) {
                 scheduleStartup();
@@ -129,11 +130,27 @@ public final class PortBridgePlugin extends JavaPlugin {
     }
 
     private void initializeMetrics() {
+        if (!settings.metrics()) {
+            getLogger().info("bStats metrics are disabled in config.yml.");
+            return;
+        }
+
         try {
             metrics = new Metrics(this, 34669);
         } catch (Exception metricsError) {
             getLogger().warning("bStats could not start: " + metricsError.getMessage());
         }
+    }
+
+    private void checkForUpdates() {
+        if (!settings.checkForUpdates()) {
+            return;
+        }
+
+        int spigotResourceId = 139616;
+        UpdateChecker.check(this, spigotResourceId, latest -> getLogger().info(
+            "A new version is available: v" + latest + " (running v" + getPluginMeta().getVersion()
+                + "). Download it at https://www.spigotmc.org/resources/" + spigotResourceId + "/"));
     }
 
     public BridgeSettings settings() {
