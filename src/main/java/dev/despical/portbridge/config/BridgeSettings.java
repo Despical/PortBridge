@@ -33,8 +33,18 @@ package dev.despical.portbridge.config;
  * <p>
  * Created at 10.10.2026
  */
-public record BridgeSettings(Startup startup, Local local, Relay relay, Binary binary, Reconnect reconnect,
-    Health health, boolean notifyOnJoin, boolean debug) {
+public record BridgeSettings(
+    Startup startup,
+    Local local,
+    Relay relay,
+    Binary binary,
+    Reconnect reconnect,
+    Health health,
+    boolean notifyOnJoin,
+    boolean metrics,
+    boolean checkForUpdates,
+    boolean debug
+) {
 
     /**
      * Stores whether and when automatic tunnel startup should be scheduled.

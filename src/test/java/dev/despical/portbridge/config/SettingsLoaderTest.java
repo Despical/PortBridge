@@ -51,6 +51,30 @@ class SettingsLoaderTest {
     }
 
     @Test
+    void metricsAreEnabledUnlessConfigured() {
+        assertTrue(SettingsLoader.parse(new YamlConfiguration(), "", 25565).metrics());
+
+        var config = new YamlConfiguration();
+        config.set("metrics", false);
+        assertFalse(SettingsLoader.parse(config, "", 25565).metrics());
+
+        config.set("metrics", "false");
+        assertThrows(IllegalArgumentException.class, () -> SettingsLoader.parse(config, "", 25565));
+    }
+
+    @Test
+    void updateChecksAreEnabledUnlessConfigured() {
+        assertTrue(SettingsLoader.parse(new YamlConfiguration(), "", 25565).checkForUpdates());
+
+        var config = new YamlConfiguration();
+        config.set("check-for-updates", false);
+        assertFalse(SettingsLoader.parse(config, "", 25565).checkForUpdates());
+
+        config.set("check-for-updates", 0);
+        assertThrows(IllegalArgumentException.class, () -> SettingsLoader.parse(config, "", 25565));
+    }
+
+    @Test
     void keepsSpecificPaperBindingAndIgnoresManualTarget() {
         var config = new YamlConfiguration();
         config.set("local.host", "other.example");

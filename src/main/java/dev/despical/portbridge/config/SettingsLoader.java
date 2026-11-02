@@ -122,7 +122,8 @@ public final class SettingsLoader {
                 integer(config, "reconnect.max-attempts", 0, 0, 1000)),
             new BridgeSettings.Health(bool(config, "health.enabled", true), interval, timeout,
                 integer(config, "health.failure-threshold", 3, 1, 100)),
-            bool(config, "notifications.on-admin-join", true), bool(config, "debug", false)
+            bool(config, "notifications.on-admin-join", true), bool(config, "metrics", true),
+            bool(config, "check-for-updates", true), bool(config, "debug", false)
         );
     }
 

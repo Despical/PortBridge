@@ -77,5 +77,11 @@ notifications:
   # Show the current connection address to joining players with portbridge.address.
   on-admin-join: true
 
+# Enable anonymous bStats usage metrics on startup. Restart after changing this value.
+metrics: true
+
+# Check for a newer Port Bridge release on startup and log a console message if one exists.
+check-for-updates: true
+
 # Log additional Bore output with the configured relay secret redacted.
 debug: false
