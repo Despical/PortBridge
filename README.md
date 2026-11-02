@@ -118,6 +118,8 @@ Edit files under `plugins/PortBridge/` and run `/port reload`. Reload validates 
 | `health.interval-seconds` / `timeout-seconds` | `30` / `5` | Probe frequency and timeout; the timeout also applies to the local check. |
 | `health.failure-threshold` | `3` | Consecutive failed public probes before reconnection. |
 | `notifications.on-admin-join` | `true` | Show the address to joining players with `portbridge.address`. |
+| `metrics` | `true` | Send anonymous bStats metrics; takes effect after a restart. |
+| `check-for-updates` | `true` | Look for a newer SpigotMC release on startup and log a console message; nothing is downloaded. |
 | `debug` | `false` | Enable additional Bore diagnostic output. |
 
 The **local port** belongs to the running Minecraft server. The **public port** belongs to the relay. Automatic detection reads the current listener; it does not change Minecraft's local port or router settings. With automatic detection disabled, the chosen local listener must already be reachable.
@@ -158,7 +160,7 @@ The 1.0.0 release also passed isolated runtime checks on Paper 1.21.11 build 132
 
 ## bStats metrics
 
-Port Bridge collects anonymous usage statistics through [bStats](https://bstats.org/plugin/bukkit/Port%20Bridge/34669), including server counts and version adoption. Server owners can opt out by setting `enabled: false` in `plugins/bStats/config.yml` and restarting the server.
+Port Bridge collects anonymous usage statistics through [bStats](https://bstats.org/plugin/bukkit/Port%20Bridge/34669), including server counts and version adoption. Set `metrics: false` in Port Bridge's `config.yml` and restart the server to stop this plugin from reporting, or set `enabled: false` in `plugins/bStats/config.yml` to opt out for every plugin on the server.
 
 ## Security and contributing
 
