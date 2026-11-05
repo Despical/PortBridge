@@ -27,6 +27,7 @@ import java.net.http.HttpResponse;
 import java.time.Duration;
 import java.util.function.Consumer;
 import java.util.logging.Level;
+import java.util.regex.Pattern;
 
 /**
  * Asks SpigotMC for the latest published resource version without blocking the server thread.
@@ -42,6 +43,8 @@ import java.util.logging.Level;
 final class UpdateChecker {
 
     private static final String API = "https://api.spigotmc.org/legacy/update.php?resource=";
+
+    private static final Pattern NON_VERSION = Pattern.compile("[^0-9.]");
 
     private UpdateChecker() {
     }
@@ -60,7 +63,9 @@ final class UpdateChecker {
             .header("User-Agent", "PortBridge/" + current)
             .build();
 
-        HttpClient.newHttpClient().sendAsync(request, HttpResponse.BodyHandlers.ofString())
+        HttpClient client = HttpClient.newHttpClient();
+
+        client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
             .thenAccept(response -> {
                 String latest = response.body().trim();
 
@@ -71,13 +76,14 @@ final class UpdateChecker {
             .exceptionally(error -> {
                 plugin.getLogger().log(Level.FINE, "Update check failed", error);
                 return null;
-            });
+            })
+            .whenComplete((ignored, error) -> client.close());
     }
 
     /** Compares dotted numeric versions; anything unparsable counts as not newer. */
     static boolean isNewer(String candidate, String current) {
-        String[] left = candidate.replaceAll("[^0-9.]", "").split("\\.");
-        String[] right = current.replaceAll("[^0-9.]", "").split("\\.");
+        String[] left = NON_VERSION.matcher(candidate).replaceAll("").split("\\.");
+        String[] right = NON_VERSION.matcher(current).replaceAll("").split("\\.");
 
         for (int index = 0; index < Math.max(left.length, right.length); index++) {
             int a = index < left.length ? parse(left[index]) : 0;
