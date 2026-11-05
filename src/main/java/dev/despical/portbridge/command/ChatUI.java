@@ -282,8 +282,10 @@ public final class ChatUI {
         }
     }
 
+    private static final java.util.regex.Pattern WHITESPACE = java.util.regex.Pattern.compile("\\s+");
+
     private static String shorten(String value) {
-        String clean = value.replaceAll("\\s+", " ").trim();
+        String clean = WHITESPACE.matcher(value).replaceAll(" ").trim();
         return clean.length() > 240 ? clean.substring(0, 237) + "..." : clean;
     }
 
