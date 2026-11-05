@@ -36,6 +36,7 @@ import java.util.regex.Pattern;
 public final class BoreOutput {
 
     private static final Pattern ANSI = Pattern.compile("\\u001B(?:\\[[0-?]*[ -/]*[@-~]|\\][^\\u0007\\u001B]*(?:\\u0007|\\u001B\\\\))");
+    private static final Pattern CONTROL = Pattern.compile("[\\p{Cntrl}&&[^\\t]]");
     private static final Pattern LISTENING = Pattern.compile("(?:^|\\s)listening at (?:\\[[a-zA-Z0-9:._%-]+]|[a-zA-Z0-9:._%-]+):(\\d{1,5})\\s*$");
     private static final Pattern CONNECTED = Pattern.compile("(?:^|\\s)connected to server\\s+remote_port=(\\d{1,5})\\s*$");
 
@@ -43,7 +44,27 @@ public final class BoreOutput {
     }
 
     public static String clean(String line) {
-        return ANSI.matcher(line).replaceAll("").replaceAll("[\\p{Cntrl}&&[^\\t]]", "").strip();
+        if (!needsCleaning(line)) {
+            return line.strip();
+        }
+
+        return CONTROL.matcher(ANSI.matcher(line).replaceAll("")).replaceAll("").strip();
+    }
+
+    /**
+     * Reports whether the line contains an escape sequence or control character. Most bore output does not, and
+     * those lines skip both regular expressions.
+     */
+    private static boolean needsCleaning(String line) {
+        for (int index = 0; index < line.length(); index++) {
+            char value = line.charAt(index);
+
+            if (value != '\t' && Character.isISOControl(value)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public static OptionalInt remotePort(String line) {
