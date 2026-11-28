@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/portbridge-icon.svg" width="128" height="128" alt="Port Bridge icon">
+  <img src="https://docs.despical.dev/images/portbridge/icon.png" width="128" height="128" alt="Port Bridge icon">
 </p>
 
 <h1 align="center">Port Bridge</h1>
@@ -18,7 +18,7 @@
 
 <p align="center">Read the <a href="https://docs.despical.dev/port-bridge/">documentation</a> for setup instructions, configuration details and relay settings.</p>
 
-![Port Bridge cover with a cyan network bridge connecting two Minecraft islands](assets/portbridge-cover.png)
+![Port Bridge cover with a cyan network bridge connecting two Minecraft islands](https://docs.despical.dev/images/portbridge/cover.png)
 
 ---
 

@@ -4,3 +4,6 @@ build/
 .idea/
 *.iml
 __pycache__/
+
+# Marketplace art and designs live in the docs repository
+/assets/
