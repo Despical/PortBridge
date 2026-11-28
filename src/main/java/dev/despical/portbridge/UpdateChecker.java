@@ -77,7 +77,7 @@ final class UpdateChecker {
                 plugin.getLogger().log(Level.FINE, "Update check failed", error);
                 return null;
             })
-            .whenComplete((ignored, error) -> client.close());
+            .whenComplete((ignored, error) -> client.shutdown());
     }
 
     /** Compares dotted numeric versions; anything unparsable counts as not newer. */
